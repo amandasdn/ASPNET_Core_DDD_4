@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+
+<div class="top-bar">
+    <div class="top-title">
+        <NavLink href="" Match="NavLinkMatch.All"><strong>AMANDA</strong>SDN</NavLink>
+    </div>
+
+    <ul class="top-buttons">
+        <li>
+            <a href="https://www.linkedin.com/in/amandasdn" target="_blank">
+                <i class="fab fa-linkedin-in" />
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/amandasdn/ASPNET_Core_DDD_4/" target="_blank">
+                <i class="fab fa-github" />
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+    <div class="content">
+        @Body
+    </div>
+</div>

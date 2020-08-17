@@ -1,0 +1,15 @@
+﻿@*
+    Title Page
+*@
+
+<h1>
+    <i class="fas fa-hashtag highlight mr-2" />
+
+    @ChildContent
+</h1>
+
+@code {
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+}

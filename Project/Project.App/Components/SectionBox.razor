@@ -1,0 +1,27 @@
+﻿@*
+    Section Box
+*@
+
+<section class="section-content col-md-@Col @CssClass">
+    <div class="@(HasBox ? "section-box" : "")">
+
+        <div class="@(HasRow ? "row" : "")">
+            @ChildContent
+        </div>
+
+        <div class="clearfix" />
+    </div>
+</section>
+
+@code {
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    [Parameter] public int Col { get; set; } = 12;
+
+    [Parameter] public bool HasBox { get; set; } = true;
+    [Parameter] public bool HasRow { get; set; }
+
+    [Parameter] public string CssClass { get; set; }
+
+}

@@ -1,0 +1,183 @@
+﻿// ====================================================================
+// Imports
+
+@mixin font-face($name, $type, $weight) {
+  @font-face {
+    font-family: $name;
+    src: url("fonts/#{$name}/#{$name}-#{$type}.eot");
+    src: url("fonts/#{$name}/#{$name}-#{$type}.eot?#iefix") format("embedded-opentype"), url("fonts/#{$name}/#{$name}-#{$type}.woff2") format("woff2"), url("fonts/#{$name}/#{$name}-#{$type}.woff") format("woff"), url("fonts/#{$name}/#{$name}-#{$type}.ttf") format("truetype");
+    font-weight: $weight;
+    font-style: normal;
+  }
+}
+
+// ====================================================================
+// Fonts
+
+@mixin fa-content($content) {
+  font-family: "Font Awesome 5 Free";
+  content: $content;
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 900;
+}
+
+@include font-face("Montserrat", "Light", 200);
+@include font-face("Montserrat", "Regular", 400);
+@include font-face("Montserrat", "Medium", 600);
+@include font-face("Montserrat", "Bold", 800);
+@include font-face("Montserrat", "Black", 900);
+
+@include font-face("Lato", "Light", 200);
+@include font-face("Lato", "Regular", 400);
+@include font-face("Lato", "Bold", 800);
+@include font-face("Lato", "Black", 900);
+
+// ====================================================================
+// Variables
+
+$topbar-height: 70px;
+$sidebar-width: 250px;
+$font-montserrat: "Montserrat";
+$font-lato: "Lato";
+$transition: .2s all;
+$border-radius: 3px;
+
+$color-red: #ff3535;
+$color-green: #10ba88;
+$color-blue: #4385f5;
+$color-orange: #ff8800;
+$color-yellow: #ffc629;
+$color-pink: #f45489;
+$color-purple: #3b044c;
+$color-gray-light: #f1f1f1;
+$color-gray: #d4d4d4;
+
+// ==========================================================================
+// Buttons
+
+@mixin button($color) {
+  color: white;
+  background: $color;
+  text-shadow: 0px 2px darken($color, 20%);
+  border: 1px solid $color;
+
+  &.btn-component-outline {
+    background: transparent;
+    text-shadow: none;
+    color: $color;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &:hover {
+    background: darken($color, 5%);
+    border-color: darken($color, 10%)
+  }
+
+  &:active {
+    background: darken($color, 20%);
+    border-color: darken($color, 30%);
+    color: white;
+  }
+}
+
+// ==========================================================================
+// Media Queries
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin mobile {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile-portrait {
+  @media (max-width: #{$tablet-width - 1px}) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin mobile-landscape {
+  @media (max-width: #{$tablet-width - 1px}) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-portrait {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+// ==========================================================================
+// Keyframes
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@include keyframes(key-pulse) {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1)
+  }
+
+  1% {
+    -webkit-transform: scale(.5);
+    transform: scale(.5)
+  }
+
+  45% {
+    opacity: 1;
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05)
+  }
+
+  80% {
+    -webkit-transform: scale(.95);
+    transform: scale(.95)
+  }
+
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1)
+  }
+}
