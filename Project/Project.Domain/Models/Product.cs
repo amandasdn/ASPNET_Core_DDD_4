@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Project.Domain.Models
 {
-    class Product : Entity
+    public class Product : Entity
     {
         [Key]
         [Display(Name = "Código")]
-        public int Id { get; set; }
+        public Guid Id { get; set; } = new Guid();
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "O nome do produto é obrigatório.")]
@@ -27,8 +27,9 @@ namespace Project.Domain.Models
         [Display(Name = "Imagem")]
         public string Image { get; set; }
 
-        public Category Category { get; set; }
+        [Required]
+        public Guid CategoryId { get; set; }
 
-        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

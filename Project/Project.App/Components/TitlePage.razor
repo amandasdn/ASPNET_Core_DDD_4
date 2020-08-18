@@ -3,7 +3,7 @@
 *@
 
 <h1>
-    <i class="fas fa-hashtag highlight mr-2" />
+    <i class="@Icon highlight mr-2" />
 
     @ChildContent
 </h1>
@@ -11,5 +11,10 @@
 @code {
 
     [Parameter] public RenderFragment ChildContent { get; set; }
+
+    /// <summary>
+    /// Font Awesome class
+    /// </summary>
+    [Parameter] public string Icon { get; set; } = "fas fa-hashtag";
 
 }

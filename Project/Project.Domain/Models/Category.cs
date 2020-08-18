@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Project.Domain.Models
 {
-    class Category : Entity
+    public class Category : Entity
     {
         [Key]
         [Display(Name = "Código")]
-        public int Id { get; set; }
+        public Guid Id { get; set; } = new Guid();
 
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "O nome da categoria é obrigatória.")]
