@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Project.Infrastructure.Repositories
 {
-    class ProductRepository
+    public class ProductRepository
     {
     }
 }
