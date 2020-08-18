@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Domain", "Project.Domain\Project.Domain.csproj", "{9120B015-DE2A-4790-A69A-F03682B54AF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Domain", "Project.Domain\Project.Domain.csproj", "{9120B015-DE2A-4790-A69A-F03682B54AF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Service", "Project.Service\Project.Service.csproj", "{51A03F21-DB41-48C3-8270-D811530E0AA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Service", "Project.Service\Project.Service.csproj", "{51A03F21-DB41-48C3-8270-D811530E0AA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Infrastructure", "Project.Infrastructure\Project.Infrastructure.csproj", "{B86C35B8-DCF4-49C5-A5A8-66BCD4B2F557}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Infrastructure", "Project.Infrastructure\Project.Infrastructure.csproj", "{B86C35B8-DCF4-49C5-A5A8-66BCD4B2F557}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.App", "Project.App\Project.App.csproj", "{4FFC7828-2441-4D42-9D4A-F77BDE6B13F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.App", "Project.App\Project.App.csproj", "{4FFC7828-2441-4D42-9D4A-F77BDE6B13F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
