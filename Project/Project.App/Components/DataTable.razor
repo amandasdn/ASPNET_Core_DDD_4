@@ -1,0 +1,22 @@
+﻿@*
+    DataTable Bootstrap
+*@
+
+@typeparam T
+@inherits DataTableModel<T>
+
+<table id="@ElemRef.Id" class="table table-striped table-bordered" style="width:100%" @ref="ElemRef">
+    <thead>
+        <tr>
+            @DataTableHeader(Items.FirstOrDefault())
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Items)
+        {
+            <tr>
+                @DataTableBody(item)
+            </tr>
+        }
+    </tbody>
+</table>

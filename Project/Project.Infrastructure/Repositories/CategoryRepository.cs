@@ -4,6 +4,7 @@ using Project.Infrastructure.Data;
 using Project.Infrastructure.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +28,18 @@ namespace Project.Infrastructure.Repositories
             return await FindByIdAsync(obj.Id);
         }
 
+        public async Task UpdateAsync(Category obj)
+        {
+            var category = await _context.Categories.FirstOrDefaultAsync(item => item.Id == item.Id);
+
+            if (category != null)
+            {
+                category = obj;
+
+                await _context.SaveChangesAsync();
+            }
+        }
+
         public async Task RemoveAsync(Category obj)
         {
             var category = await _context.Categories.FirstOrDefaultAsync(item => item.Id == item.Id);
@@ -43,12 +56,12 @@ namespace Project.Infrastructure.Repositories
         {
             var categories = await _context.Categories.AsNoTracking().ToListAsync();
 
-            return categories;
+            return categories.Where(item => !item.Removed).ToList();
         }
 
         public async Task<Category> FindByIdAsync(Guid id)
         {
-            var category = await _context.Categories.AsNoTracking().FirstOrDefaultAsync(item => item.Id == id);
+            var category = await _context.Categories.AsNoTracking().Where(item => !item.Removed).FirstOrDefaultAsync(item => item.Id == id);
 
             return category;
         }

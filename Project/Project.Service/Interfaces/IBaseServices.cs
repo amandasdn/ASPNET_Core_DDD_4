@@ -9,6 +9,8 @@ namespace Project.Service.Interfaces
     {
         Task<T> SaveAsync(T obj);
 
+        Task UpdateAsync(T obj);
+
         Task RemoveAsync(T obj);
 
         Task<List<T>> ListAllAsync();

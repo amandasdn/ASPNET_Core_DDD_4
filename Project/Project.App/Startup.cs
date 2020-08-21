@@ -10,7 +10,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Project.Domain.Models;
 using Project.Infrastructure.Data;
+using Project.Service.Interfaces;
+using Project.Service.Services;
 
 namespace Project.App
 {

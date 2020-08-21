@@ -21,6 +21,8 @@ namespace Project.Service.Services
 
         public async Task<List<Category>> ListAllAsync() => await _repo.ListAllAsync();
 
+        public async Task UpdateAsync(Category obj) => await _repo.UpdateAsync(obj);
+
         public async Task RemoveAsync(Category obj) => await _repo.RemoveAsync(obj);
 
         public async Task<Category> SaveAsync(Category obj) => await _repo.SaveAsync(obj);
