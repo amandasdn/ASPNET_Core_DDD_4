@@ -9,6 +9,6 @@ namespace Project.App.Shared
 {
     public class MainBase : ComponentBase
     {
-        protected internal CategoriesService _service { get; set; }
+        [Inject] public CategoryService _serviceCategory { get; set; }
     }
 }

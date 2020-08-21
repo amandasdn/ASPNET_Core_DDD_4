@@ -12,8 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Project.Domain.Models;
 using Project.Infrastructure.Data;
-using Project.Service.Interfaces;
+using Project.Domain.Interfaces;
 using Project.Service.Services;
+using Project.Infrastructure.Repositories;
 
 namespace Project.App
 {
@@ -36,6 +37,10 @@ namespace Project.App
 
             services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("DatabaseProducts"));
             services.AddScoped<DataContext, DataContext>();
+
+            services.AddScoped<CategoryRepository>();
+
+            services.AddScoped<CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

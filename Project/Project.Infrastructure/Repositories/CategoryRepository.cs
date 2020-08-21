@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project.Domain.Models;
 using Project.Infrastructure.Data;
-using Project.Infrastructure.Interfaces;
+using Project.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Project.Infrastructure.Repositories
 {
-    public class CategoryRepository : IBaseRepository<Category>
+    public class CategoryRepository : IBaseCrud<Category>
     {
         private readonly DataContext _context;
 

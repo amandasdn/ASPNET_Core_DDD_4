@@ -17,7 +17,7 @@ namespace Project.App.Pages.Categories
         {
             await base.OnInitializedAsync();
 
-            CategoriesList = await _service.ListAllAsync();
+            CategoriesList = await _serviceCategory.ListAllAsync();
         }
     }
 }

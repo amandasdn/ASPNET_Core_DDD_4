@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.Service.Interfaces
+namespace Project.Domain.Interfaces
 {
-    public interface IBaseServices<T>
+    public interface IBaseCrud<T>
     {
         Task<T> SaveAsync(T obj);
 

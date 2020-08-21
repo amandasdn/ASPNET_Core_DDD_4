@@ -1,5 +1,5 @@
 ﻿using Project.Domain.Models;
-using Project.Service.Interfaces;
+using Project.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,14 +8,12 @@ using Project.Infrastructure.Repositories;
 
 namespace Project.Service.Services
 {
-    public class CategoriesService : IBaseServices<Category>
+    public class CategoryService : IBaseCrud<Category>
     {
         private readonly CategoryRepository _repo;
 
-        public CategoriesService(CategoryRepository repo)
-        {
-            _repo = repo;
-        }
+        public CategoryService(CategoryRepository repo)
+            => _repo = repo;
 
         public async Task<Category> FindByIdAsync(Guid id) => await _repo.FindByIdAsync(id);
 

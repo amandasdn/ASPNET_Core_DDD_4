@@ -7,21 +7,23 @@
 
 @if (CategoriesList != null)
 {
-    <DataTable T="Category" Items="CategoriesList" Context="item">
-        <DataTableHeader>
-            <th><DisplayName T="Category" Name="@nameof(Category.Id)" /></th>
-            <th><DisplayName T="Category" Name="@nameof(Category.Name)" /></th>
-            <th><DisplayName T="Category" Name="@nameof(Category.CreatedOn)" /></th>
-            <th><DisplayName T="Category" Name="@nameof(Category.Active)" /></th>
-        </DataTableHeader>
+    <SectionBox>
+        <DataTable T="Category" Items="CategoriesList" Context="item">
+            <DataTableHeader>
+                <th><DisplayName T="Category" Name="@nameof(Category.Id)" /></th>
+                <th><DisplayName T="Category" Name="@nameof(Category.Name)" /></th>
+                <th><DisplayName T="Category" Name="@nameof(Category.CreatedOn)" /></th>
+                <th><DisplayName T="Category" Name="@nameof(Category.Active)" /></th>
+            </DataTableHeader>
 
-        <DataTableBody>
-            <td>@item.Id</td>
-            <td>@item.Name</td>
-            <td>@item.CreatedOn</td>
-            <td>@item.Active </td>
-        </DataTableBody>
-    </DataTable>
+            <DataTableBody>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.CreatedOn</td>
+                <td>@item.Active </td>
+            </DataTableBody>
+        </DataTable>
+    </SectionBox>
 }
 else
 {
