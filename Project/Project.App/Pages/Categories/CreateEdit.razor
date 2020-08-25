@@ -1,5 +1,33 @@
-﻿<h3>CreateEdit</h3>
+﻿@page "/categories/create"
+@page "/categories/edit/{CategoryId:guid}"
+@inherits CreateEditModel
+@using Project.App.Components
+@using Project.Domain.Models
 
-@code {
+<PageHeader Icon="fas fa-bars">
+    <Title>
+        @if (!IsEdit)
+        {
+            <span>Nova Categoria</span>
+        }
+        else
+        {
+            <span>@CategoryObj.Name: Editar</span>
+        }
+    </Title>
+    <Actions>
+        <Button Text="Excluir" Color="red" Icon="times" />
+    </Actions>
+</PageHeader>
 
-}
+<SectionBox HasRow="true">
+    <EditForm Model="CategoryObj">
+        <FieldText T="Category" Label="@nameof(Category.Name)" Value="@CategoryObj.Name" />
+    </EditForm>
+</SectionBox>
+
+<SectionBox HasBox="false">
+    <Button Text="Salvar" Color="green" Icon="check" CssClass="mr-1" OnClick="OnSave" />
+
+    <Button Text="Cancelar" Color="red" Outline="true" Url="/categories" />
+</SectionBox>

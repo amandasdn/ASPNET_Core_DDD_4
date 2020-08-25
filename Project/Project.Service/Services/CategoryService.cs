@@ -23,6 +23,14 @@ namespace Project.Service.Services
 
         public async Task RemoveAsync(Category obj) => await _repo.RemoveAsync(obj);
 
-        public async Task<Category> SaveAsync(Category obj) => await _repo.SaveAsync(obj);
+        public async Task<Category> SaveAsync(Category obj)
+        {
+            obj.Id = Guid.NewGuid();
+            obj.CreatedOn = DateTimeOffset.Now;
+            obj.Active = true;
+            obj.Removed = false;
+
+            return await _repo.SaveAsync(obj);
+        }
     }
 }

@@ -1,0 +1,55 @@
+﻿@*
+    Field Text (input type text)
+*@
+
+@typeparam T
+
+<fieldset class="col-md-@Col field-input @CssClass">
+
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <label for="@ElemRef.Id" class="@(isFocus ? "purple" : "")">
+            <DisplayName T="T" Name="@Label" />
+        </label>
+    }
+
+    <input type="text" value="@Value" required="@Required" id="@ElemRef.Id"
+           @attributes="AdditionalAttributes"
+           @onfocus="ToggleFocus"
+           @onblur="ToggleFocus"
+           @ref="ElemRef"
+           autocomplete="off" />
+
+</fieldset>
+
+@code {
+
+    private ElementReference ElemRef = new ElementReference("fieldtext-" + Guid.NewGuid());
+
+    private string _value;
+
+    [Parameter]
+    public string Value
+    {
+        get => _value ?? string.Empty;
+        set { if (Value != value) _value = value; ValueChanged.InvokeAsync(value); }
+    }
+
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    [Parameter] public string Label { get; set; }
+
+    [Parameter] public bool Required { get; set; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> AdditionalAttributes { get; set; }
+
+    [Parameter] public int Col { get; set; } = 12;
+
+    private bool isFocus;
+
+    protected void ToggleFocus() => isFocus = !isFocus;
+
+    [Parameter] public string CssClass { get; set; }
+
+}

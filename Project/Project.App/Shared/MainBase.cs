@@ -9,6 +9,8 @@ namespace Project.App.Shared
 {
     public class MainBase : ComponentBase
     {
+        [Inject] public NavigationManager NavManager { get; set; }
+
         [Inject] public CategoryService _serviceCategory { get; set; }
     }
 }

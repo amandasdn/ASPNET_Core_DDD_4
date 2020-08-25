@@ -10,10 +10,10 @@
 
         @if (!string.IsNullOrEmpty(Icon))
         {
-            <i class="@($"fa{(IconRegular ? "r" : "")} fa-{Icon}")" />
+            <i class="@Icon" />
         }
 
-        @Text
+        @Text 
 
     </button>
 }
@@ -25,7 +25,7 @@ else
 
         @if (!string.IsNullOrEmpty(Icon))
         {
-            <i class="@($"fa{(IconRegular ? "r" : "")} fa-{Icon}")" />
+            <i class="@Icon" />
         }
 
         @Text
@@ -72,9 +72,19 @@ else
     /// <summary>
     /// Icon from Font Awesome [fa-*]
     /// </summary>
-    [Parameter] public string Icon { get; set; }
-    [Parameter] public bool IconRegular { get; set; }
+    [Parameter] public string Icon { get; set; } = string.Empty;
 
     [Parameter] public bool Disabled { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        if (Icon != string.Empty)
+        if (!Icon.ToLower().Contains("fa fa-") && !Icon.ToLower().Contains("fas fa-") && !Icon.ToLower().Contains("far fa-"))
+        {
+            Icon = "fas fa-" + Icon;
+        }
+    }
 
 }

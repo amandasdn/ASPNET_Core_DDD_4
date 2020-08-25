@@ -392,3 +392,164 @@ ul.nav {
     // box-shadow: -1px 2px 10px rgba(black, .08);
   }
 }
+
+// ====================================================================
+// Form
+
+form {
+  width: 100%;
+}
+
+fieldset[class*=field-] {
+  label {
+    font-size: 10px;
+    color: lighten(desaturate($color-purple, 60%), 40%);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    display: block;
+    width: 100%;
+
+    &.purple {
+      color: $color-purple;
+    }
+  }
+
+  input, textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 8px 10px;
+    border-radius: 0;
+    border: 1px solid #d2d2d2;
+
+    &:focus {
+      outline: none;
+      border-color: lighten(desaturate($color-purple, 50%), 50%);
+    }
+  }
+
+  textarea {
+    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    height: 150px;
+    max-height: 250px;
+  }
+
+  &.field-checkbox, &.field-radio {
+    width: 220px;
+
+    &.display-block {
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 15%;
+      min-width: unset;
+      float: left;
+      height: 16px;
+      margin-top: 2px;
+    }
+
+    label {
+      // float: right;
+      width: 85%;
+      font-size: 14px;
+      text-transform: none;
+      color: #111;
+      margin: 0;
+      padding-left: 10px;
+    }
+  }
+
+  &.field-checkswitch {
+    .f-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 22px;
+      margin-bottom: 0;
+
+      .switch {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .3s;
+        transition: .3s;
+        border-radius: 30px;
+
+        &:before {
+          position: absolute;
+          content: "";
+          height: 16px;
+          width: 16px;
+          left: 5px;
+          top: 3px;
+          background-color: #fff;
+          -webkit-transition: .4s;
+          transition: .4s;
+          border-radius: 30px;
+        }
+      }
+
+      input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+
+        &:checked + .switch {
+          background-color: $color-green;
+
+          &:before {
+            -webkit-transform: translateX(24px);
+            -ms-transform: translateX(24px);
+            transform: translateX(24px);
+          }
+        }
+
+        &:focus + .switch {
+          box-shadow: 0 0 1px $color-green;
+        }
+      }
+
+      & + .f-switch-label {
+        vertical-align: middle;
+        margin-left: 10px;
+        display: inline-block;
+        color: #111;
+        margin-bottom: 0;
+        cursor: pointer;
+        width: auto;
+        padding-top: 10px;
+      }
+    }
+
+    display: inline-block;
+    float: left;
+
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+
+  &.field-search {
+    input {
+      padding-left: 40px;
+    }
+
+    &:after {
+      @include fa-content("\f002");
+      opacity: .4;
+      position: absolute;
+      left: 28px;
+      top: 9px;
+      color: $color-purple;
+      cursor: pointer;
+    }
+  }
+}
