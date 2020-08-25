@@ -3,7 +3,13 @@
 @using Project.App.Components
 @using Project.Domain.Models
 
-<TitlePage Icon="fas fa-bars">Categorias</TitlePage>
+<PageHeader Icon="fas fa-bars">
+    <Title>Categorias</Title>
+    <Actions>
+        <Button Text="Nova Categoria" Color="blue" Url="/categories/create" />
+    </Actions>
+</PageHeader>
+
 
 @if (CategoriesList != null)
 {

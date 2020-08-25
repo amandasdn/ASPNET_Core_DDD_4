@@ -1,0 +1,28 @@
+﻿@*
+    Page Header
+*@
+
+<div class="col-md-8">
+    <h1 style="padding-left: 0;">
+        <i class="@Icon highlight mr-2" />
+
+        @Title
+    </h1>
+</div>
+
+<div class="col-md-4 pt-3 text-right">
+    @Actions
+</div>
+
+@code {
+
+    [Parameter] public RenderFragment Title { get; set; }
+
+    [Parameter] public RenderFragment Actions { get; set; }
+
+    /// <summary>
+    /// Font Awesome class
+    /// </summary>
+    [Parameter] public string Icon { get; set; } = "fas fa-hashtag";
+
+}
