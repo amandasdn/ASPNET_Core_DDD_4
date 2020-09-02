@@ -30,23 +30,15 @@ namespace Project.Infrastructure.Repositories
 
         public async Task UpdateAsync(Category obj)
         {
-            var category = await _context.Categories.FirstOrDefaultAsync(item => item.Id == item.Id);
+            var category = await _context.Categories.FirstOrDefaultAsync(item => item.Id == obj.Id);
 
             if (category != null)
             {
-                category = obj;
+                _context.Entry(category).CurrentValues.SetValues(obj);
 
-                await _context.SaveChangesAsync();
-            }
-        }
-
-        public async Task RemoveAsync(Category obj)
-        {
-            var category = await _context.Categories.FirstOrDefaultAsync(item => item.Id == item.Id);
-
-            if(category != null)
-            {
-                category.Removed = true;
+                // category = obj;
+                // 
+                // _context.Categories.Update(category);
 
                 await _context.SaveChangesAsync();
             }

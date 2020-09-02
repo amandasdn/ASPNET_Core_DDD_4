@@ -13,7 +13,8 @@
         </label>
     }
 
-    <input type="text" value="@Value" required="@Required" id="@ElemRef.Id"
+    <input type="text" required="@Required" id="@ElemRef.Id"
+           @bind-value="@Value"
            @attributes="AdditionalAttributes"
            @onfocus="ToggleFocus"
            @onblur="ToggleFocus"
@@ -32,9 +33,13 @@
     public string Value
     {
         get => _value ?? string.Empty;
-        set { if (Value != value) _value = value; ValueChanged.InvokeAsync(value); }
+        set { 
+            if (_value == value) return;
+            _value = value;
+            ValueChanged.InvokeAsync(value);
+        }
     }
-
+    
     [Parameter] public EventCallback<string> ValueChanged { get; set; }
 
     [Parameter] public string Label { get; set; }

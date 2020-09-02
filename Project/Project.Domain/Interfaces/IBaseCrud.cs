@@ -11,8 +11,6 @@ namespace Project.Domain.Interfaces
 
         Task UpdateAsync(T obj);
 
-        Task RemoveAsync(T obj);
-
         Task<List<T>> ListAllAsync();
 
         Task<T> FindByIdAsync(Guid id);

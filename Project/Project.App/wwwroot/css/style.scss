@@ -552,4 +552,9 @@ fieldset[class*=field-] {
       cursor: pointer;
     }
   }
+
+  & + .validation-message {
+    padding: 10px 15px;
+    padding-bottom: 0;
+  }
 }

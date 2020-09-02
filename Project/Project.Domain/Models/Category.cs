@@ -12,7 +12,7 @@ namespace Project.Domain.Models
         public Guid Id { get; set; } = new Guid();
 
         [Display(Name = "Nome")]
-        [Required(ErrorMessage = "O nome da categoria é obrigatória.")]
+        [Required(ErrorMessage = "O nome da categoria é obrigatório.")]
         [StringLength(200, MinimumLength = 3)]
         public string Name { get; set; }
     }

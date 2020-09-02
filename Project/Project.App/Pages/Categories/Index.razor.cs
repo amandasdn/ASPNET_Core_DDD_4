@@ -19,5 +19,6 @@ namespace Project.App.Pages.Categories
 
             CategoriesList = await _serviceCategory.ListAllAsync();
         }
+
     }
 }

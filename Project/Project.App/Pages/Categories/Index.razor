@@ -15,17 +15,17 @@
     <SectionBox>
         <DataTable T="Category" Items="CategoriesList" Context="item">
             <DataTableHeader>
-                <th><DisplayName T="Category" Name="@nameof(Category.Id)" /></th>
                 <th><DisplayName T="Category" Name="@nameof(Category.Name)" /></th>
                 <th><DisplayName T="Category" Name="@nameof(Category.CreatedOn)" /></th>
                 <th><DisplayName T="Category" Name="@nameof(Category.Active)" /></th>
+                <th></th>
             </DataTableHeader>
 
             <DataTableBody>
-                <td>@item.Id</td>
                 <td>@item.Name</td>
-                <td>@item.CreatedOn</td>
-                <td>@item.Active </td>
+                <td>@item.CreatedOn.ToString("yyyy/MM/dd")</td>
+                <td>@item.Active</td>
+                <td class="text-center"><Button Text="Editar" Color="orange" Url="@($"/categories/edit/{item.Id}")" /></td>
             </DataTableBody>
         </DataTable>
     </SectionBox>

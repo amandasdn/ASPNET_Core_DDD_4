@@ -620,3 +620,7 @@ fieldset[class*=field-].field-search:after {
   top: 9px;
   color: #3b044c;
   cursor: pointer; }
+
+fieldset[class*=field-] + .validation-message {
+  padding: 10px 15px;
+  padding-bottom: 0; }

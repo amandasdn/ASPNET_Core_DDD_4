@@ -12,8 +12,7 @@ namespace Project.Service.Services
     {
         private readonly CategoryRepository _repo;
 
-        public CategoryService(CategoryRepository repo)
-            => _repo = repo;
+        public CategoryService(CategoryRepository repo) => _repo = repo;
 
         public async Task<Category> FindByIdAsync(Guid id) => await _repo.FindByIdAsync(id);
 
@@ -21,7 +20,12 @@ namespace Project.Service.Services
 
         public async Task UpdateAsync(Category obj) => await _repo.UpdateAsync(obj);
 
-        public async Task RemoveAsync(Category obj) => await _repo.RemoveAsync(obj);
+        public async Task RemoveAsync(Category obj)
+        {
+            obj.Removed = true;
+
+            await _repo.UpdateAsync(obj);
+        }
 
         public async Task<Category> SaveAsync(Category obj)
         {

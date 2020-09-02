@@ -12,22 +12,30 @@
         }
         else
         {
-            <span>@CategoryObj.Name: Editar</span>
+            <span>Editar Categoria</span>
         }
     </Title>
     <Actions>
-        <Button Text="Excluir" Color="red" Icon="times" />
+        @if (IsEdit)
+        {
+            <Button Text="Excluir" Color="red" Icon="times" OnClick="OnRemove" />
+        }
     </Actions>
 </PageHeader>
 
-<SectionBox HasRow="true">
-    <EditForm Model="CategoryObj">
-        <FieldText T="Category" Label="@nameof(Category.Name)" Value="@CategoryObj.Name" />
-    </EditForm>
-</SectionBox>
+<EditForm Model="CategoryObj" OnSubmit="OnSave">
 
-<SectionBox HasBox="false">
-    <Button Text="Salvar" Color="green" Icon="check" CssClass="mr-1" OnClick="OnSave" />
+    <SectionBox HasRow="true">
+        <DataAnnotationsValidator />
 
-    <Button Text="Cancelar" Color="red" Outline="true" Url="/categories" />
-</SectionBox>
+        <FieldText T="Category" Label="@nameof(Category.Name)" @bind-Value="@CategoryObj.Name" />
+
+        <ValidationMessage For="(() => CategoryObj.Name)" />
+    </SectionBox>
+
+    <SectionBox HasBox="false">
+        <Button Text="Salvar" Color="green" Icon="check" CssClass="mr-1" Type="submit" />
+        <Button Text="Cancelar" Color="red" Outline="true" Url="/categories" />
+    </SectionBox>
+
+</EditForm>
