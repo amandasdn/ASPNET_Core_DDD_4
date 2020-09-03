@@ -24,12 +24,10 @@
 </PageHeader>
 
 <EditForm Model="CategoryObj" OnSubmit="OnSave">
+    <DataAnnotationsValidator />
 
     <SectionBox HasRow="true">
-        <DataAnnotationsValidator />
-
         <FieldText T="Category" Label="@nameof(Category.Name)" @bind-Value="@CategoryObj.Name" />
-
         <ValidationMessage For="(() => CategoryObj.Name)" />
     </SectionBox>
 

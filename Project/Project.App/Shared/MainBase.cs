@@ -11,6 +11,8 @@ namespace Project.App.Shared
     {
         [Inject] public NavigationManager NavManager { get; set; }
 
-        [Inject] public CategoryService _serviceCategory { get; set; }
+        [Inject] public CategoryService ServiceCategory { get; set; }
+
+        [Inject] public ProductService ServiceProduct { get; set; }
     }
 }

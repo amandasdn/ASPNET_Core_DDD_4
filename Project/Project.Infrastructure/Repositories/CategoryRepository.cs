@@ -36,15 +36,11 @@ namespace Project.Infrastructure.Repositories
             {
                 _context.Entry(category).CurrentValues.SetValues(obj);
 
-                // category = obj;
-                // 
-                // _context.Categories.Update(category);
-
                 await _context.SaveChangesAsync();
             }
         }
 
-        public async Task<List<Category>> ListAllAsync()
+        public async Task<IEnumerable<Category>> ListAllAsync()
         {
             var categories = await _context.Categories.AsNoTracking().ToListAsync();
 

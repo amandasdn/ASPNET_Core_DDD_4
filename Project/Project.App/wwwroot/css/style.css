@@ -503,6 +503,9 @@ ul.nav li.nav-item i[class^=fa] {
 form {
   width: 100%; }
 
+fieldset[class*=field-]:not(:last-child) {
+  padding-bottom: 15px; }
+
 fieldset[class*=field-] label {
   font-size: 10px;
   color: #a06cb0;
@@ -622,5 +625,4 @@ fieldset[class*=field-].field-search:after {
   cursor: pointer; }
 
 fieldset[class*=field-] + .validation-message {
-  padding: 10px 15px;
-  padding-bottom: 0; }
+  padding: 0 15px; }

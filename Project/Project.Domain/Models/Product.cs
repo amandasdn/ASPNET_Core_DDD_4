@@ -24,12 +24,10 @@ namespace Project.Domain.Models
         [Required(ErrorMessage = "O preço do produto é obrigatório.")]
         public float Price { get; set; } = 0.00f;
 
-        [Display(Name = "Imagem")]
-        public string Image { get; set; }
-
         [Required]
         public Guid CategoryId { get; set; }
 
+        [Display(Name = "Categoria")]
         public Category Category { get; set; }
     }
 }

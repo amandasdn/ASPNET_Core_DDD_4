@@ -39,8 +39,10 @@ namespace Project.App
             services.AddScoped<DataContext, DataContext>();
 
             services.AddScoped<CategoryRepository>();
+            services.AddScoped<ProductRepository>();
 
             services.AddScoped<CategoryService>();
+            services.AddScoped<ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

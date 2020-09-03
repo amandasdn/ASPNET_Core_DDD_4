@@ -11,14 +11,13 @@ namespace Project.App.Pages.Categories
 {
     public class IndexModel : MainBase
     {
-        public List<Category> CategoriesList;
+        public IEnumerable<Category> CategoriesList;
 
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
 
-            CategoriesList = await _serviceCategory.ListAllAsync();
+            CategoriesList = await ServiceCategory.ListAllAsync();
         }
-
     }
 }

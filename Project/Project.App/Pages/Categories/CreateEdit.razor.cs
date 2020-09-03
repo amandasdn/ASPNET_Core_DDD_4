@@ -17,6 +17,8 @@ namespace Project.App.Pages.Categories
 
         public bool IsEdit;
 
+        private string _pageList = "/categories";
+
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync();
@@ -25,10 +27,10 @@ namespace Project.App.Pages.Categories
 
             if(IsEdit)
             {
-                CategoryObj = await _serviceCategory.FindByIdAsync(CategoryId);
+                CategoryObj = await ServiceCategory.FindByIdAsync(CategoryId);
 
                 if(CategoryObj.Removed)
-                    NavManager.NavigateTo("/categories");
+                    NavManager.NavigateTo(_pageList);
             }
         }
 
@@ -37,19 +39,19 @@ namespace Project.App.Pages.Categories
             if (ec.Validate())
             {
                 if (IsEdit)
-                    await _serviceCategory.UpdateAsync(CategoryObj);
+                    await ServiceCategory.UpdateAsync(CategoryObj);
                 else
-                    await _serviceCategory.SaveAsync(CategoryObj);
+                    await ServiceCategory.SaveAsync(CategoryObj);
 
-                NavManager.NavigateTo("/categories");
+                NavManager.NavigateTo(_pageList);
             }
         }
 
         public async Task OnRemove()
         {
-            await _serviceCategory.RemoveAsync(CategoryObj);
+            await ServiceCategory.RemoveAsync(CategoryObj);
 
-            NavManager.NavigateTo("/categories");
+            NavManager.NavigateTo(_pageList);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Project.Domain.Interfaces
 
         Task UpdateAsync(T obj);
 
-        Task<List<T>> ListAllAsync();
+        Task<IEnumerable<T>> ListAllAsync();
 
         Task<T> FindByIdAsync(Guid id);
     }

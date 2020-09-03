@@ -1,0 +1,58 @@
+﻿@page "/products/create"
+@page "/products/edit/{ProductId:guid}"
+@inherits CreateEditModel
+@using Project.App.Components
+@using Project.Domain.Models
+
+<PageHeader Icon="fas fa-bars">
+    <Title>
+        @if (!IsEdit)
+        {
+            <span>Novo Produto</span>
+        }
+        else
+        {
+            <span>Editar Produto</span>
+        }
+    </Title>
+    <Actions>
+        @if (IsEdit)
+        {
+            <Button Text="Excluir" Color="red" Icon="times" OnClick="OnRemove" />
+        }
+    </Actions>
+</PageHeader>
+
+<EditForm Model="ProductObj" OnSubmit="OnSave">
+    <DataAnnotationsValidator />
+     
+    <SectionBox HasRow="true">
+        @if (CategoriesItems != null)
+        {
+            <FieldSelect Col="5" T="Product" Label="@nameof(Product.Category)" ValueType="Guid" @bind-Value="@ProductObj.CategoryId" Items="CategoriesItems" />
+            <ValidationMessage For="(() => ProductObj.CategoryId)" />
+        }
+        else
+        {
+            <fieldset />
+            <div class="validation-message">
+                Nenhuma categoria cadastrada.
+            </div>
+        }
+
+        <FieldText T="Product" Label="@nameof(Product.Name)" @bind-Value="@ProductObj.Name" />
+        <ValidationMessage For="(() => ProductObj.Name)" />
+
+        <FieldTextArea T="Product" Label="@nameof(Product.Description)" @bind-Value="@ProductObj.Description" />
+        <ValidationMessage For="(() => ProductObj.Description)" />
+
+        <FieldNumber T="Product" Label="@nameof(Product.Price)" @bind-Value="@ProductObj.Price" ValueType="float" Col="2" min="0" max="10000" step="0.01" />
+        <ValidationMessage For="(() => ProductObj.Price)" />
+    </SectionBox>
+
+    <SectionBox HasBox="false">
+        <Button Text="Salvar" Color="green" Icon="check" CssClass="mr-1" Type="submit" />
+        <Button Text="Cancelar" Color="red" Outline="true" Url="/products" />
+    </SectionBox>
+
+</EditForm>

@@ -1,10 +1,10 @@
 ﻿@*
-    Field Text (input type text)
+    Text Area
 *@
 
 @typeparam T
 
-<fieldset class="col-md-@Col field-input @CssClass">
+<fieldset class="col-md-@Col field-textarea @CssClass">
 
     @if (!string.IsNullOrWhiteSpace(Label))
     {
@@ -13,19 +13,16 @@
         </label>
     }
 
-    <input type="text" required="@Required" id="@ElemRef.Id"
-           @bind-value="@Value"
-           @attributes="AdditionalAttributes"
-           @onfocus="ToggleFocus"
-           @onblur="ToggleFocus"
-           @ref="ElemRef"
-           autocomplete="off" />
+    <textarea required="@Required" id="@ElemRef.Id"
+            @attributes="AdditionalAttributes"
+            @onfocus="ToggleFocus"
+            @onblur="ToggleFocus">@Value</textarea>
 
 </fieldset>
 
 @code {
 
-    private ElementReference ElemRef = new ElementReference("fieldtext-" + Guid.NewGuid());
+    private ElementReference ElemRef = new ElementReference("fieldtextarea-" + Guid.NewGuid());
 
     private string _value;
 
@@ -34,13 +31,13 @@
     {
         get => _value ?? string.Empty;
         set
-        { 
+        {
             if (_value == value) return;
             _value = value;
             ValueChanged.InvokeAsync(value);
         }
     }
-    
+
     [Parameter] public EventCallback<string> ValueChanged { get; set; }
 
     [Parameter] public string Label { get; set; }

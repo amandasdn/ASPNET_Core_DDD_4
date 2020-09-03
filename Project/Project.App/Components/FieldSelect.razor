@@ -1,0 +1,35 @@
+﻿@*
+    Input select
+*@
+
+@typeparam T
+@typeparam ValueType
+@inherits SelectModel<ValueType>
+
+<fieldset class="col-md-@Col field-select @CssClass">
+
+    @if (!string.IsNullOrWhiteSpace(Label))
+    {
+        <label for="@ElemRef.Id" class="@(isFocus ? "purple" : "")">
+            <DisplayName T="T" Name="@Label" />
+        </label>
+    }
+
+    <select id="@ElemRef.Id"
+            class="form-control"
+            data-live-search="true" data-container="body"
+            @attributes="AdditionalAttributes"
+            @onfocus="ToggleFocus"
+            @onblur="ToggleFocus"
+            @ref="ElemRef">
+
+        @foreach (var item in Items)
+        {
+            <option value="@item.Key" selected="@(item.Key.Equals(Value))">
+                @item.Value
+            </option>
+        }
+
+    </select>
+
+</fieldset>

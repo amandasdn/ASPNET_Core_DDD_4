@@ -16,7 +16,7 @@ namespace Project.Service.Services
 
         public async Task<Category> FindByIdAsync(Guid id) => await _repo.FindByIdAsync(id);
 
-        public async Task<List<Category>> ListAllAsync() => await _repo.ListAllAsync();
+        public async Task<IEnumerable<Category>> ListAllAsync() => await _repo.ListAllAsync();
 
         public async Task UpdateAsync(Category obj) => await _repo.UpdateAsync(obj);
 
@@ -27,14 +27,6 @@ namespace Project.Service.Services
             await _repo.UpdateAsync(obj);
         }
 
-        public async Task<Category> SaveAsync(Category obj)
-        {
-            obj.Id = Guid.NewGuid();
-            obj.CreatedOn = DateTimeOffset.Now;
-            obj.Active = true;
-            obj.Removed = false;
-
-            return await _repo.SaveAsync(obj);
-        }
+        public async Task<Category> SaveAsync(Category obj) => await _repo.SaveAsync(obj);
     }
 }

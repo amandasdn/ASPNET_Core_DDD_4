@@ -1,0 +1,38 @@
+﻿@page "/products"
+@inherits IndexModel
+@using Project.App.Components
+@using Project.Domain.Models
+
+<PageHeader Icon="fas fa-bars">
+    <Title>Produtos</Title>
+    <Actions>
+        <Button Text="Novo Produto" Color="blue" Url="/products/create" />
+    </Actions>
+</PageHeader>
+
+@if (ProductsList != null)
+{
+    <SectionBox>
+        <DataTable T="Product" Items="ProductsList" Context="item">
+            <DataTableHeader>
+                <th><DisplayName T="Product" Name="@nameof(Product.Name)" /></th>
+                <th><DisplayName T="Product" Name="@nameof(Product.CreatedOn)" /></th>
+                <th><DisplayName T="Product" Name="@nameof(Product.Active)" /></th>
+                <th></th>
+            </DataTableHeader>
+
+            <DataTableBody>
+                <td>@item.Name</td>
+                <td>@item.CreatedOn.ToString("yyyy/MM/dd")</td>
+                <td>@item.Active</td>
+                <td class="text-center"><Button Text="Editar" Color="orange" Url="@($"/products/edit/{item.Id}")" /></td>
+            </DataTableBody>
+        </DataTable>
+    </SectionBox>
+}
+else
+{
+    <SectionBox>
+        <p class="m-0">Nenhum item a ser exibido.</p>
+    </SectionBox>
+}

@@ -401,6 +401,10 @@ form {
 }
 
 fieldset[class*=field-] {
+  &:not(:last-child) {
+    padding-bottom: 15px;
+  }
+
   label {
     font-size: 10px;
     color: lighten(desaturate($color-purple, 60%), 40%);
@@ -554,7 +558,6 @@ fieldset[class*=field-] {
   }
 
   & + .validation-message {
-    padding: 10px 15px;
-    padding-bottom: 0;
+    padding: 0 15px;
   }
 }
